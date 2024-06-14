@@ -1,0 +1,275 @@
+.button {
+  transition: .3s all ease;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: brightness(90%);
+  }
+
+  &:not(:disabled):hover {
+    filter: brightness(80%);
+  }
+
+  &:not(:disabled):active {
+    filter: brightness(70%);
+  }
+
+  &.primaryBg {
+    border: 1px solid var(--primary);
+
+    &.filled {
+      background-color: var(--primary);
+    }
+  }
+
+  //&.secondary {
+  //  color: var(--secondary);
+  //
+  //  &:hover {
+  //    color: var(--secondary-hover);
+  //  }
+  //
+  //  &:active {
+  //    color: var(--secondary-active);
+  //  }
+  //}
+
+  &.secondaryBg {
+    border: 1px solid var(--secondary);
+
+    &.filled {
+      background-color: var(--secondary);
+    }
+  }
+
+  //&.success {
+  //  color: var(--success);
+  //
+  //  &:hover {
+  //    color: var(--success-hover);
+  //  }
+  //
+  //  &:active {
+  //    color: var(--success-active);
+  //  }
+  //}
+
+  &.successBg {
+    border: 1px solid var(--success);
+
+    &.filled {
+      background-color: var(--success);
+    }
+
+  }
+
+  //&.warning {
+  //  color: var(--warning);
+  //
+  //  &:hover {
+  //    color: var(--warning-hover);
+  //  }
+  //
+  //  &:active {
+  //    color: var(--warning-active);
+  //  }
+  //}
+
+  &.warningBg {
+    border: 1px solid var(--warning);
+
+    &.filled {
+      background-color: var(--warning);
+    }
+
+  }
+
+  &.dangerBg {
+    border: 1px solid var(--danger);
+
+    &.filled {
+      background-color: var(--danger);
+    }
+
+  }
+
+  //&.info {
+  //  color: var(--info);
+  //
+  //  &:hover {
+  //    color: var(--info-hover);
+  //  }
+  //
+  //  &:active {
+  //    color: var(--info-active);
+  //  }
+  //}
+
+  &.infoBg {
+    border: 1px solid var(--info);
+
+    &.filled {
+      background-color: var(--info);
+
+    }
+  }
+
+  //&.link {
+  //  color: var(--link);
+  //
+  //  &:hover {
+  //    color: var(--link-hover);
+  //  }
+  //
+  //  &:active {
+  //    color: var(--link-active);
+  //  }
+  //}
+
+  &.linkBg {
+    border: 1px solid var(--link);
+
+    &.filled {
+      background-color: var(--link);
+    }
+  }
+
+  &.white {
+    color: var(--white);
+
+    & svg {
+      fill: var(--white);
+    }
+  }
+
+  &.whiteBg {
+    background-color: var(--white);
+    border: 1px solid var(--white);
+  }
+
+  &.black {
+    color: var(--black);
+
+    & svg {
+      fill: var(--black);
+    }
+  }
+
+  &.blackBg {
+    background-color: var(--black);
+    border: 1px solid var(--black);
+  }
+
+
+  &.h1 {
+    padding: var(--padding-3) var(--padding-1);
+
+    & svg {
+      width: var(--paragraph-size-1);
+      height: var(--paragraph-size-1);
+    }
+  }
+
+  &.h2 {
+    padding: var(--padding-4) var(--padding-1);
+
+    & svg {
+      width: var(--paragraph-size-2);
+      height: var(--paragraph-size-2);
+    }
+  }
+
+  &.h3 {
+    padding: var(--padding-5) var(--padding-2);
+
+    & svg {
+      width: var(--paragraph-size-3);
+      height: var(--paragraph-size-3);
+    }
+  }
+
+  &.h4 {
+    padding: var(--padding-5) var(--padding-2);
+
+    & svg {
+      width: var(--paragraph-size-4);
+      height: var(--paragraph-size-4);
+    }
+  }
+
+  &.h5 {
+    padding: var(--padding-6) var(--padding-3);
+
+    & svg {
+      width: var(--paragraph-size-5);
+      height: var(--paragraph-size-5);
+    }
+  }
+
+  &.h6 {
+    padding: var(--padding-6) var(--padding-3);
+
+    & svg {
+      width: var(--paragraph-size-6);
+      height: var(--paragraph-size-6);
+    }
+  }
+
+
+  &.borderH1 {
+    border-radius: var(--border-radius-1);
+  }
+
+  &.borderH2 {
+    border-radius: var(--border-radius-2);
+  }
+
+  &.borderH3 {
+    border-radius: var(--border-radius-3);
+  }
+
+  &.borderH4 {
+    border-radius: var(--border-radius-4);
+  }
+
+  &.borderH5 {
+    border-radius: var(--border-radius-5);
+  }
+
+  &.borderH6 {
+    border-radius: var(--border-radius-6);
+  }
+
+
+  &.dashed {
+    border-style: dashed;
+    background-color: inherit;
+
+    &:hover {
+      background-color: inherit;
+    }
+
+    &:active {
+      background-color: inherit;
+    }
+  }
+
+  &.default {
+    border-style: solid;
+    background-color: inherit;
+
+    &:hover {
+      background-color: inherit;
+    }
+
+    &:active {
+      background-color: inherit;
+
+    }
+  }
+
+}

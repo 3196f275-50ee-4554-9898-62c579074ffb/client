@@ -1,9 +1,8 @@
 import * as React from "react"
 import * as Router from "react-router-dom"
-import { IProject, Project, ProjectStatus, UserRole } from "../classes/Project"
 import { ProjectCard } from "./ProjectCard"
 import { SearchBox } from "./SearchBox"
-import { ProjectsManager } from "../classes/ProjectsManager"
+import { IProject, Project, ProjectsManager, ProjectStatus, UserRole } from '@entities/project';
 
 interface Props {
   projectsManager: ProjectsManager

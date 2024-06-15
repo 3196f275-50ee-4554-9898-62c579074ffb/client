@@ -1,17 +1,17 @@
-import { entityArguments } from "./arguments";
-import { getDataInMemory } from "./memory";
+import { entityArguments } from './arguments';
+import { getDataInMemory } from './memory';
 
 export function getRawArguments(rawLineData, typeName) {
     let result = [rawLineData.ID, typeName];
     rawLineData.arguments.forEach(arg => {
         let isNull = arg === null;
-        let isObject = typeof arg === "object";
+        let isObject = typeof arg === 'object';
         if (isNull) {
             result.push(null);
         } else {
             if (Array.isArray(arg)) {
                 let arrStr = String(arg.map(e => e.value));
-                let slashArr = arrStr.split(",").join("/");
+                let slashArr = arrStr.split(',').join('/');
                 result.push(slashArr);
             } else if (isObject) {
                 result.push(arg.value);
@@ -31,13 +31,13 @@ export function entityToJson(entity) {
     for (let propName in entity) {
         let prop = entity[propName];
         if (prop) {
-            if (typeof prop.type !== "string" && prop.value !== undefined) {
+            if (typeof prop.type !== 'string' && prop.value !== undefined) {
                 switch (prop.type) {
                     case 1:
                         obj[propName] = String(prop.value);
                         break;
                     case 3:
-                        obj[propName] = prop.value.toUpperCase() === "T" ? true : false;
+                        obj[propName] = prop.value.toUpperCase() === 'T' ? true : false;
                         break;
                     case 4:
                         obj[propName] = Number(prop.value);
@@ -64,8 +64,8 @@ export function setValue(v) {
     if (v === undefined) {
         return v;
     } else if (isNaN(Number(v))) {
-        if (["true", "false"].includes(String(v).toLowerCase())) {
-            return String(v).toLowerCase() === "true" ? true : false;
+        if (['true', 'false'].includes(String(v).toLowerCase())) {
+            return String(v).toLowerCase() === 'true' ? true : false;
         } else {
             return String(v);
         }
@@ -87,11 +87,11 @@ export async function fileToUint8Array(file) {
 export function fillEmptyCell(schema, memory, sheets) {
     const emptyCell = {
         style: {
-            horizontalAlignment: "center",
+            horizontalAlignment: 'center',
             border: true,
             fill: {
-                type: "solid",
-                color: { rgb: "c8c8c8" }, // gray
+                type: 'solid',
+                color: { rgb: 'c8c8c8' }, // gray
             },
         },
         value: undefined,

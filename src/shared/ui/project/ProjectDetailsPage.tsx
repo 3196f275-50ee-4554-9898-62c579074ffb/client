@@ -3,8 +3,8 @@ import * as Router from "react-router-dom"
 import * as OBC from "openbim-components"
 import * as THREE from "three"
 import {useState} from "react"
-import {ToDo, TodoCreator, ToDoPriority} from "../bim-components/TodoCreator"
-import {TodoCard} from "../bim-components/TodoCreator/src/TodoCard"
+import { ProjectsManager, ViewerContext } from '@entities/project';
+import { ToDo, TodoCard, TodoCreator, ToDoPriority } from '@entities/todo';
 
 interface Props {
     projectsManager: ProjectsManager

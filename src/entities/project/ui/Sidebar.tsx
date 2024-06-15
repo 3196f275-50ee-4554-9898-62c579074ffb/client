@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Router from "react-router-dom"
 import { ViewerContext } from "./IFCViewer"
-import { TodoCreator } from "../bim-components/TodoCreator"
+import { TodoCreator } from '@entities/todo';
 
 export function Sidebar() {
   const { viewer } = React.useContext(ViewerContext)
@@ -12,7 +12,6 @@ export function Sidebar() {
 	}
   return (
     <aside id="sidebar">
-      <img id="company-logo" src="./assets/company-logo.svg" alt="Construction Company" />
       <ul id="nav-buttons">
         <Router.Link to="/">
           <li><span className="material-icons-round">apartment</span>Projects</li>

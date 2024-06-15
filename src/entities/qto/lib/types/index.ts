@@ -1,3 +1,1 @@
-export {
-    QtoResult,
-} from './qto.ts';
+export * from './qto.ts';

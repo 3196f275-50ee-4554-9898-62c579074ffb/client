@@ -1,10 +1,10 @@
 import { IProject, Project } from '@entities/project';
 
-const file = await fetch('src/resource/NAV-IPI-ET1_E07-ZZZ-M3D-EST.ifc');
+const file = await fetch('/src/shared/assets/resources/NAV-IPI-ET1_E07-ZZZ-M3D-EST.ifc');
 const buffer = await file.arrayBuffer();
 const project1_data = new Uint8Array(buffer);
 
-const file2 = await fetch('src/resource/HNS-CTL-MOD-EST-001.ifc');
+const file2 = await fetch('/src/shared/assets/resources/HNS-CTL-MOD-EST-001.ifc');
 const buffer2 = await file2.arrayBuffer();
 const project2_data = new Uint8Array(buffer2);
 

@@ -1,9 +1,2 @@
-export {
-    ProjectsManager,
-} from './ProjectsManager.ts';
-export {
-    IProject,
-    Project,
-    UserRole,
-    ProjectStatus,
-} from './Project.ts';
+export * from './ProjectsManager.ts';
+export * from './Project.ts';

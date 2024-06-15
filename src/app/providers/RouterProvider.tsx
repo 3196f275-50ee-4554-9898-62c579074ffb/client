@@ -2,6 +2,9 @@ import { createBrowserRouter, redirect } from 'react-router-dom';
 import { LoginPage, MainPage, MyPage, PlaningPage, RegisterPage, ReportsPage, UploadPage } from '@pages/ui';
 import { AuthProvider } from '@app/providers/AuthProvider.tsx';
 import { SidebarProvider } from '@widgets/lib/utils/SidebarProvider';
+import { ProjectDetailsPage, ProjectsManager, ProjectsPage } from '@entities/project';
+
+const projectsManager = new ProjectsManager();
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +39,14 @@ export const router = createBrowserRouter([
                         element: <SidebarProvider><ReportsPage /></SidebarProvider>,
                     },
                 ],
+            },
+            {
+                path: 'project',
+                element: <ProjectsPage projectsManager={projectsManager} />,
+            },
+            {
+                path: 'project/:id',
+                element: <ProjectDetailsPage projectsManager={projectsManager} />,
             },
         ],
     },

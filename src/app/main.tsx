@@ -9,6 +9,7 @@ import { LoadingProvider } from '@shared/lib/utils/context';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
+
         <ThemeProvider>
             <LoadingProvider>
                 <App />

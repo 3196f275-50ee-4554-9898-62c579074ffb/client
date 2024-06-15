@@ -13,12 +13,12 @@ export const useRegister = () => {
     };
     useEffect(() => {
         if (data) {
-            const accessToken = data.accessToken.split(' ')[1];
-            localStorage.setItem('accessToken', accessToken);
-            dispatch(setToken(accessToken));
-            toast.success('Вы успешно вошли');
+            // const accessToken = data.accessToken.split(' ')[1];
+            // localStorage.setItem('accessToken', accessToken);
+            // dispatch(setToken(accessToken));
+            toast.success('Вы успешно зарешистрировались');
             setTimeout(() => {
-                navigate('/');
+                navigate('/auth/login');
             }, 1500);
         }
     }, [data]);

@@ -51,7 +51,7 @@ export const LoginForm = () => {
             className={cls.form}>
             <Text.Heading
                 className={cls.title}
-                size={SizeEnum.H2}
+                size={SizeEnum.H4}
                 color={ColorEnum.TEXT}
                 weight={WeightEnum.MEDIUM}
             >
@@ -70,7 +70,7 @@ export const LoginForm = () => {
                             label="Почта"
                             value={field.value}
                             onChange={field.onChange}
-                            size={SizeEnum.H2}
+                            size={SizeEnum.H3}
                             border={BorderEnum.H6}
                             bgColor={ColorEnum.TEXT}
                             color={ColorEnum.TEXT}
@@ -102,7 +102,7 @@ export const LoginForm = () => {
                             label="Пароль"
                             value={field.value}
                             onChange={field.onChange}
-                            size={SizeEnum.H2}
+                            size={SizeEnum.H3}
                             border={BorderEnum.H6}
                             bgColor={ColorEnum.TEXT}
                             color={ColorEnum.TEXT}
@@ -125,19 +125,19 @@ export const LoginForm = () => {
                 isLoading={isLoading}
                 type="submit"
                 color={ColorEnum.WHITE}
-                size={SizeEnum.H2}
+                size={SizeEnum.H4}
                 bgColor={ColorEnum.PRIMARY}
-                border={BorderEnum.H5}
+                border={BorderEnum.H6}
             >
                 Отправить
             </Button>
             <Text.Paragraph
-                size={SizeEnum.H3}
+                size={SizeEnum.H4}
                 color={ColorEnum.TEXT}
             >
                 Нет аккаунта?&nbsp;
                 <Text.Link
-                    size={SizeEnum.H3}
+                    size={SizeEnum.H4}
                     to="/auth/register">Создать</Text.Link>
             </Text.Paragraph>
         </form>

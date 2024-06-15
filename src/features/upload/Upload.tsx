@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cls from './Upload.module.scss';
 import UploadIcon from '@assets/icons/upload.svg';
-import { Button, Text } from '@shared/ui';
+import { Button, customStyles, Input, Select, Text } from '@shared/ui';
 import { BorderEnum, ColorEnum, formatDuration, SizeEnum, useAppDispatch } from '@shared/lib';
 import { toggleVideoProcessing } from '@features/events';
 import { useSendVideo } from '@entities/video';
+import { useGetObjects } from '@entities/object';
 
 interface UploadProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
 }
@@ -13,9 +14,18 @@ export const Upload: React.FC<UploadProps> = (props) => {
     const [videoFile, setVideoFile] = useState<File | null>(null);
     const fileInputRef = useRef<HTMLInputElement>();
     const videoRef = useRef<HTMLVideoElement>();
+    const [object, setObject] = useState<number>();
     const [duration, setDuration] = useState<number | null>(null);
     const dispatch = useAppDispatch();
     const { trigger } = useSendVideo();
+    const [selectedObject, setSelectedObject] = useState(null);
+
+
+    const options = useGetObjects();
+    const handleSelectChange = (selectedOption) => {
+        setSelectedObject(selectedOption.id);
+    };
+
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -49,18 +59,21 @@ export const Upload: React.FC<UploadProps> = (props) => {
     };
 
     const handleConfirmClick = async () => {
-        if (videoFile) {
+        if (videoFile && selectedObject) {
             const formData = new FormData();
             formData.append('video', videoFile);
-            const file = formData.get("video")
-            console.log(file);
+            formData.append('building_id', selectedObject); // Ensure building_id is being set correctly
+            console.log(formData.get('building_id')); // For debugging
             try {
                 trigger(formData);
             } catch (error) {
                 console.error('Ошибка загрузки видео:', error);
             }
+        } else {
+            alert('Пожалуйста, выберите объект и загрузите видео.');
         }
     };
+
 
     return (
         <div className={cls.wrapper}>
@@ -92,6 +105,12 @@ export const Upload: React.FC<UploadProps> = (props) => {
                         </video>
                     </div>
                     <div className={cls.info}>
+                        <Select
+                            styles={customStyles}
+                            options={options}
+                            onChange={handleSelectChange}
+                            placeholder="Выберите объект"
+                        />
                         <ul className={cls.listInfo}>
                             <li className={cls.listItem}>
                                 <Text.Paragraph color={ColorEnum.TEXT} size={SizeEnum.H1}>
@@ -106,7 +125,7 @@ export const Upload: React.FC<UploadProps> = (props) => {
                         </ul>
                         <div className={cls.listItem}>
                             <Button
-                                size={SizeEnum.H2}
+                                size={SizeEnum.H3}
                                 color={ColorEnum.WHITE}
                                 border={BorderEnum.H5}
                                 bgColor={ColorEnum.PRIMARY}

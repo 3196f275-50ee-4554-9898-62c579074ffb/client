@@ -8,6 +8,12 @@ export const userApi = mainApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        getUsers: build.query({
+            query: () => ({
+                url: `/auth/users`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
-export const { useGetMeQuery } = userApi;
+export const { useGetMeQuery, useGetUsersQuery } = userApi;

@@ -1,9 +1,10 @@
 import cls from './MyPage.module.scss';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Button, Input, Text } from '@shared/ui';
-import { BorderEnum, classNames, ColorEnum, SizeEnum } from '@shared/lib';
+import { BorderEnum, classNames, ColorEnum, SizeEnum, useAppSelector } from '@shared/lib';
+import { selectUser } from '@entities/user';
 
 
 export interface IFormChange {
@@ -21,6 +22,7 @@ export interface IFormChange {
 
 export const MyPage = () => {
     const [img, setImg] = useState<File | null>();
+    const user = useAppSelector(selectUser);
     const {
         register,
         handleSubmit,
@@ -33,18 +35,26 @@ export const MyPage = () => {
     }
         = useForm<IFormChange>({
         defaultValues: {
-            firstName: 'Альберт',
-            middleName: 'Владимирович',
-            lastName: 'Курагин',
+            firstName: user?.first_name,
+            middleName: '',
+            lastName: user?.last_name,
             tgUsername: '',
-            email: 'test@gmail.com',
-            address: 'Краснодар, ЖД. вокзал Краснодар 1',
+            email: user?.email,
+            address: '',
             oldPassword: '',
             newPassword: '',
             repeatNewPassword: '',
         },
     });
 
+    useEffect(() => {
+        if (user) {
+            console.log(user);
+            setValue('firstName', user.first_name);
+            setValue('lastName', user.last_name);
+            setValue('email', user.email);
+        }
+    }, [user]);
 
     const firstName = register('firstName');
     const middleName = register('middleName');
@@ -438,7 +448,7 @@ export const MyPage = () => {
                     color={ColorEnum.WHITE}
                     bgColor={ColorEnum.DANGER}
                     size={SizeEnum.H2}
-                    onClick={handleReset}
+                    // onClick={handleReset}
                 >
                     Очистить
                 </Button>

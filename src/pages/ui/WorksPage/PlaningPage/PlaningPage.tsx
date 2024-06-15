@@ -5,6 +5,7 @@ import { Gantt, Task, ViewMode } from 'gantt-task-react';
 import 'gantt-task-react/dist/index.css';
 import { useState } from 'react';
 import { useGetObjects } from '@entities/object';
+import { useNavigate } from 'react-router-dom';
 
 const ganttStylingOptions = {
     fontFamily: 'var(--fontFamilyFirst)',
@@ -16,136 +17,107 @@ const tasks: Task[] = [
     {
         start: new Date(2020, 1, 1),
         end: new Date(2020, 1, 2),
-        name: 'Idea',
-        id: 'Task 0',
+        name: '1 этаж',
+        id: '1',
         type: 'task',
-        progress: 45,
-        isDisabled: true,
+        progress: 80,
+        isDisabled: false,
         styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
     },
     {
         start: new Date(2020, 1, 3),
         end: new Date(2020, 1, 5),
-        name: 'Idea 2',
-        id: 'Task 1',
+        name: '2 этаж',
+        id: '2',
         type: 'task',
-        progress: 20,
-        isDisabled: true,
+        progress: 0,
+        isDisabled: false,
         styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
-        dependencies: ['Task 0'],
+        dependencies: ['1'],
     },
     {
         start: new Date(2020, 1, 6),
         end: new Date(2020, 1, 8),
-        name: 'Design Phase',
-        id: 'Task 2',
+        name: '3 этаж',
+        id: '3',
         type: 'task',
-        progress: 50,
+        progress: 0,
         isDisabled: false,
         styles: { progressColor: '#6aa84f', progressSelectedColor: '#38761d' },
+        dependencies: ['2'],
+
     },
     {
         start: new Date(2020, 1, 9),
         end: new Date(2020, 1, 11),
-        name: 'Development',
-        id: 'Task 3',
+        name: '4 этаж',
+        id: '4',
         type: 'task',
-        progress: 30,
+        progress: 0,
         isDisabled: false,
         styles: { progressColor: '#3c78d8', progressSelectedColor: '#1155cc' },
+        dependencies: ['3'],
+
     },
     {
         start: new Date(2020, 1, 12),
         end: new Date(2020, 1, 14),
-        name: 'Testing',
-        id: 'Task 4',
+        name: '5 этаж',
+        id: '5',
         type: 'task',
-        progress: 60,
+        progress: 0,
         isDisabled: false,
         styles: { progressColor: '#e06666', progressSelectedColor: '#cc0000' },
+        dependencies: ['4'],
     },
     {
         start: new Date(2020, 1, 15),
         end: new Date(2020, 1, 17),
-        name: 'Deployment',
-        id: 'Task 5',
+        name: '6 этаж',
+        id: '6',
         type: 'task',
-        progress: 40,
+        progress: 0,
         isDisabled: false,
         styles: { progressColor: '#ffd966', progressSelectedColor: '#e69138' },
+        dependencies: ['5'],
     },
     {
-        start: new Date(2020, 1, 1),
+        start: new Date(2020, 1, 18),
         end: new Date(2020, 1, 20),
-        name: 'Maintenance',
-        id: 'Task 6',
+        name: '7 этаж',
+        id: '7',
         type: 'task',
-        progress: 20,
-        isDisabled: true,
+        progress: 0,
+        isDisabled: false,
         styles: { progressColor: '#a4c2f4', progressSelectedColor: '#3c78d8' },
+        dependencies: ['6'],
     },
     {
         start: new Date(2020, 1, 21),
         end: new Date(2020, 1, 23),
-        name: 'User Training',
-        id: 'Task 7',
+        name: '8 этаж',
+        id: '8',
         type: 'task',
-        progress: 70,
+        progress: 0,
         isDisabled: false,
         styles: { progressColor: '#d9ead3', progressSelectedColor: '#b6d7a8' },
+        dependencies: ['7'],
     },
     {
         start: new Date(2020, 1, 24),
         end: new Date(2020, 1, 26),
-        name: 'Review',
-        id: 'Task 8',
+        name: '9 этаж',
+        id: '9',
         type: 'task',
-        progress: 80,
+        progress: 0,
         isDisabled: false,
         styles: { progressColor: '#f9cb9c', progressSelectedColor: '#e69138' },
-    },
-    {
-        start: new Date(2020, 1, 27),
-        end: new Date(2020, 1, 29),
-        name: 'Final Approval',
-        id: 'Task 9',
-        type: 'task',
-        progress: 90,
-        isDisabled: false,
-        styles: { progressColor: '#f6b26b', progressSelectedColor: '#e69138' },
-    },
-    {
-        start: new Date(2020, 2, 1),
-        end: new Date(2020, 2, 3),
-        name: 'Documentation',
-        id: 'Task 10',
-        type: 'task',
-        progress: 100,
-        isDisabled: false,
-        styles: { progressColor: '#76a5af', progressSelectedColor: '#45818e' },
-    },
-    {
-        start: new Date(2020, 2, 4),
-        end: new Date(2020, 2, 6),
-        name: 'Project Closeout',
-        id: 'Task 11',
-        type: 'task',
-        progress: 100,
-        isDisabled: false,
-        styles: { progressColor: '#8e7cc3', progressSelectedColor: '#674ea7' },
-    },
-    {
-        start: new Date(2020, 2, 7),
-        end: new Date(2020, 2, 9),
-        name: 'Post-Mortem',
-        id: 'Task 12',
-        type: 'task',
-        progress: 100,
-        isDisabled: false,
-        styles: { progressColor: '#c27ba0', progressSelectedColor: '#a64d79' },
+        dependencies: ['8'],
+
     },
 ];
 export const PlaningPage = () => {
+    const navigate = useNavigate()
     const [selectedObject, setSelectedObject] = useState(null);
     const options = useGetObjects();
     const handleSelectChange = (selectedOption) => {
@@ -179,6 +151,9 @@ export const PlaningPage = () => {
                 <Gantt
                     {...ganttStylingOptions}
                     tasks={tasks}
+                    onClick={(task) => {
+                        navigate(`/works/planing/${task.id}`);
+                    }}
                     viewMode={ViewMode.Day}
                     locale="RUS"
                     listCellWidth={''}

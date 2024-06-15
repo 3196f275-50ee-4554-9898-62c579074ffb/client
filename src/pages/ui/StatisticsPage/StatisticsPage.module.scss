@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & .tools {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    & .select {
+      min-width: 30%;
+    }
+  }
+  & .list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  & .body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+}

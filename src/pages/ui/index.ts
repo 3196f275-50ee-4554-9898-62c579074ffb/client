@@ -4,3 +4,5 @@ export * from './RegisterPage';
 export * from './UploadPage';
 export * from './MyPage';
 export * from './WorksPage';
+export * from './PlanPage';
+export * from './StatisticsPage';

@@ -52,7 +52,7 @@ export const LoginForm = () => {
             <Text.Heading
                 className={cls.title}
                 size={SizeEnum.H2}
-                color={ColorEnum.BLACK}
+                color={ColorEnum.TEXT}
                 weight={WeightEnum.MEDIUM}
             >
                 Авторизация
@@ -72,7 +72,8 @@ export const LoginForm = () => {
                             onChange={field.onChange}
                             size={SizeEnum.H2}
                             border={BorderEnum.H6}
-                            color={ColorEnum.BLACK}
+                            bgColor={ColorEnum.TEXT}
+                            color={ColorEnum.TEXT}
                             name="email"
                             register={email}
                         />
@@ -103,7 +104,8 @@ export const LoginForm = () => {
                             onChange={field.onChange}
                             size={SizeEnum.H2}
                             border={BorderEnum.H6}
-                            color={ColorEnum.BLACK}
+                            bgColor={ColorEnum.TEXT}
+                            color={ColorEnum.TEXT}
                             name="password"
                             register={password}
                         />
@@ -131,6 +133,7 @@ export const LoginForm = () => {
             </Button>
             <Text.Paragraph
                 size={SizeEnum.H3}
+                color={ColorEnum.TEXT}
             >
                 Нет аккаунта?&nbsp;
                 <Text.Link

@@ -24,7 +24,7 @@ export const Link = (
                 [cls.warning]: color === ColorEnum.WARNING,
                 [cls.danger]: color === ColorEnum.DANGER,
                 [cls.info]: color === ColorEnum.INFO,
-                [cls.link]: color === ColorEnum.LINK,
+                [cls.linkColor]: color === ColorEnum.LINK,
                 [cls.white]: color === ColorEnum.WHITE,
                 [cls.black]: color === ColorEnum.BLACK,
                 [cls.text]: color === ColorEnum.TEXT,

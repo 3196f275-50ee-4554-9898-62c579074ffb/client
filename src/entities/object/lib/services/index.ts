@@ -1,0 +1,1 @@
+export { objectApi, useGetObjectsQuery } from './objectApi.ts';

@@ -12,3 +12,29 @@
   width: 100%;
   height: 100%;
 }
+
+._3lLk3, ._WuQ0f {
+  color: var(--text);
+  background-color: var(--bg) !important;
+}
+
+._9w8d5, .calendarTop, ._2q1Kt {
+  fill: var(--text) !important;
+}
+._35nLX {
+  fill: var(--bg) !important;
+}
+._2dZTy {
+  fill: var(--bg) !important;
+  &:nth-child(2n) {
+    fill: var(--bg-dark) !important;
+  }
+}
+._3KcaM {
+  fill: var(--text) !important;
+  font-weight: var(--fontMedium) !important;
+}
+._3zRJQ {
+  fill: var(--text-invert) !important;
+  font-weight: var(--fontMedium) !important;
+}

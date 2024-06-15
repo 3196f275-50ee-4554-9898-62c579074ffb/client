@@ -11,4 +11,5 @@ export interface ILoginRequest extends IAuthRequest {
 }
 
 export interface IRegisterRequest extends IAuthRequest {
+    repeatPassword: string;
 }

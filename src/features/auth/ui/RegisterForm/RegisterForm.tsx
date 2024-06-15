@@ -13,11 +13,13 @@ export const RegisterForm = () => {
         },
         handleSubmit,
         control,
+        watch,
         register,
     } = useForm<IRegisterRequest>({
         defaultValues: {
             email: '',
             password: '',
+            repeatPassword: '',
         },
     });
 
@@ -39,6 +41,14 @@ export const RegisterForm = () => {
             message: 'Пароль должен содержать не более 20 символов',
         },
     });
+    const repeatPassword = register('repeatPassword', {
+        validate: (value: string) => {
+            if (watch('password') !== value) {
+                return 'Пароли не совпадают';
+            }
+        },
+    });
+
     const onSubmit = (data: IRegisterRequest) => {
         trigger(data);
     };
@@ -51,7 +61,7 @@ export const RegisterForm = () => {
             <Text.Heading
                 className={cls.title}
                 size={SizeEnum.H2}
-                color={ColorEnum.BLACK}
+                color={ColorEnum.TEXT}
                 weight={WeightEnum.MEDIUM}
             >
                 Регистрация
@@ -71,7 +81,8 @@ export const RegisterForm = () => {
                             onChange={field.onChange}
                             size={SizeEnum.H2}
                             border={BorderEnum.H6}
-                            color={ColorEnum.BLACK}
+                            color={ColorEnum.WHITE}
+                            bgColor={ColorEnum.TEXT}
                             name="email"
                             register={email}
                         />
@@ -102,7 +113,8 @@ export const RegisterForm = () => {
                             onChange={field.onChange}
                             size={SizeEnum.H2}
                             border={BorderEnum.H6}
-                            color={ColorEnum.BLACK}
+                            color={ColorEnum.WHITE}
+                            bgColor={ColorEnum.TEXT}
                             name="password"
                             register={password}
                         />
@@ -113,6 +125,38 @@ export const RegisterForm = () => {
                                 size={SizeEnum.H4}
                             >
                                 {errors.password.message}
+                            </Text.Paragraph>
+                        }
+                    </div>
+                )}
+            />
+            <Controller
+                name="repeatPassword"
+                control={control}
+                render={({ field }) => (
+                    <div className={cls.wrapper}>
+                        <Input
+                            className={classNames('', {
+                                [cls.errorInput]: errors.repeatPassword !== undefined,
+                            }, [])}
+                            type="password"
+                            label="Повторите пароль"
+                            value={field.value}
+                            onChange={field.onChange}
+                            size={SizeEnum.H2}
+                            border={BorderEnum.H6}
+                            color={ColorEnum.WHITE}
+                            bgColor={ColorEnum.TEXT}
+                            name="repeatPassword"
+                            register={repeatPassword}
+                        />
+                        {errors.repeatPassword &&
+                            <Text.Paragraph
+                                className={cls.error}
+                                color={ColorEnum.DANGER}
+                                size={SizeEnum.H4}
+                            >
+                                {errors.repeatPassword.message}
                             </Text.Paragraph>
                         }
                     </div>
@@ -130,6 +174,7 @@ export const RegisterForm = () => {
             </Button>
             <Text.Paragraph
                 size={SizeEnum.H3}
+                color={ColorEnum.TEXT}
             >
                 Есть аккаунт?&nbsp;
                 <Text.Link

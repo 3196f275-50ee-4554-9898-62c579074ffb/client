@@ -1,0 +1,1 @@
+export { useGetObjects } from './useGetObjects.ts';

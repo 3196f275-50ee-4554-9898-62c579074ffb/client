@@ -22,6 +22,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <SidebarProvider><MainPage /></SidebarProvider>,
+                loader: async () => redirect('/statistics'),
             },
             {
                 path: 'upload',

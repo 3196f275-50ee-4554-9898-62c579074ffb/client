@@ -6,15 +6,15 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@shared/lib';
 
 export const useGetByObjectIdStatistics = () => {
-    const [objectTrigger, { data }] = useLazyGetByObjectIdQuery();
+    const [trigger, { data }] = useLazyGetByObjectIdQuery();
     const dispatch = useAppDispatch();
-    const trigger = async (id: string) => {
-        await objectTrigger(id);
+    const objectTrigger = async (id: string) => {
+        await trigger(id);
     };
     useEffect(() => {
         if (data) {
             dispatch(setStatistics(data));
         }
     }, [data]);
-    return { trigger, data };
+    return { objectTrigger, data };
 };

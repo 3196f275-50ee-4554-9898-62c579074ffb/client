@@ -6,9 +6,9 @@ import { useGetUsers } from '@entities/user';
 import { useGetObjects } from '@entities/object';
 import {
     changeStatisticsType, setStatistics,
-    StatisticsCanvas,
+    StatisticsCanvas, StatisticsLine, StatisticsPie,
     StatisticsTypeEnum,
-    StatisticsViolation,
+    StatisticsViolation, StatisticsWorkers,
     useGetAllStatistics, useGetByObjectIdStatistics, useGetByWorkerIdStatistics,
 } from '@entities/statistics';
 
@@ -48,7 +48,7 @@ export const StatisticsPage = () => {
         setSelectedObject(selectedOption.value);
         setSelectedUser(null);
         dispatch(changeStatisticsType(StatisticsTypeEnum.OBJECT));
-        objectTrigger(selectedOption.value);
+        objectTrigger(selectedOption.id);
     };
 
     return (
@@ -72,45 +72,28 @@ export const StatisticsPage = () => {
                 {selectedOption && (
                     <div className={cls.select}>
                         {selectedOption === 'worker' ? (
-                            <div className={cls.list}>
-                                <Select
-                                    styles={customStyles}
-                                    options={usersOptions}
-                                    onChange={handleUsersChange}
-                                    placeholder="Выберите работника"
-                                />
-                                <Button
-                                    size={SizeEnum.H4}
-                                    border={BorderEnum.H6}
-                                    color={ColorEnum.WHITE}
-
-                                >
-                                    Найти
-                                </Button>
-                            </div>
+                            <Select
+                                styles={customStyles}
+                                options={usersOptions}
+                                onChange={handleUsersChange}
+                                placeholder="Выберите работника"
+                            />
                         ) : selectedOption === 'object' ? (
-                            <div className={cls.list}>
-                                <Select
-                                    styles={customStyles}
-                                    options={objectOptions}
-                                    onChange={handleObjectsChange}
-                                    placeholder="Выберите объект"
-                                />
-                                <Button
-                                    size={SizeEnum.H4}
-                                    border={BorderEnum.H6}
-                                    color={ColorEnum.WHITE}
-                                >
-                                    Найти
-                                </Button>
-                            </div>
+                            <Select
+                                styles={customStyles}
+                                options={objectOptions}
+                                onChange={handleObjectsChange}
+                                placeholder="Выберите объект"
+                            />
                         ) : null}
                     </div>
                 )}
             </div>
             <div className={cls.body}>
-                <StatisticsCanvas />
+                <StatisticsLine />
                 <StatisticsViolation />
+                <StatisticsPie />
+                <StatisticsWorkers />
             </div>
         </div>
     );

@@ -1,44 +1,51 @@
 import cls from './StatisticsPie.module.scss';
 import { Text } from '@shared/ui';
-import { ColorEnum, SizeEnum, WeightEnum } from '@shared/lib';
+import { ColorEnum, SizeEnum, transformData, WeightEnum } from '@shared/lib';
+import { Pie, PieConfig } from '@ant-design/plots';
 
 export const StatisticsPie = () => {
-    const config = {
-        data: [
-            { type: '分类一', value: 27 },
-            { type: '分类二', value: 25 },
-            { type: '分类三', value: 18 },
-            { type: '分类四', value: 15 },
-            { type: '分类五', value: 10 },
-            { type: '其他', value: 5 },
-        ],
-        angleField: 'value',
-        colorField: 'header',
-        label: {
-            text: 'value',
-            style: {
-                fontWeight: 'bold',
-            },
-        },
-        legend: {
-            color: {
-                title: false,
-                position: 'right',
-                rowPadding: 5,
-            },
-        },
+    const data = [
+        { count: 13, type: 'Warning' },
+        { count: 11, type: 'Success' },
+        { count: 11, type: 'Danger' },
+        { count: 11, type: 'Warning' },
+        { count: 10, type: 'Success' },
+        { count: 10, type: 'Danger' },
+        { count: 9, type: 'Warning' },
+        { count: 10, type: 'Success' },
+        { count: 10, type: 'Danger' },
+        { count: 8, type: 'Warning' },
+        { count: 0, type: 'Success' },
+        { count: 0, type: 'Danger' },
+        { count: 0, type: 'Warning' },
+        { count: 0, type: 'Success' },
+        { count: 0, type: 'Danger' },
+        { count: 70, type: 'Warning' },
+        { count: 1, type: 'Success' },
+        { count: 15, type: 'Danger' },
+        { count: 0, type: 'Warning' },
+        { count: 0, type: 'Success' },
+        { count: 0, type: 'Danger' },
+    ];
+
+    const transformedData = transformData(data);
+
+    const config: PieConfig = {
+        data: transformedData,
+        angleField: 'count',
+        colorField: 'type',
     };
+
     return (
         <div className={cls.wrapper}>
             <Text.Paragraph
                 size={SizeEnum.H1}
                 weight={WeightEnum.MEDIUM}
                 color={ColorEnum.TEXT}
-
             >
                 Общее кол-во нарушений
             </Text.Paragraph>
+            <Pie {...config} />
         </div>
     );
 };
-

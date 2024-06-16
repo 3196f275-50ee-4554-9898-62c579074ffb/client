@@ -21,6 +21,17 @@ export const statisticsApi = mainApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        getAllCharts: builder.query({
+            query: () => ({
+                url: `/statistics/penalty/array`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
-export const { useGetAllQuery, useLazyGetByWorkerIdQuery, useLazyGetByObjectIdQuery } = statisticsApi;
+export const {
+    useGetAllQuery,
+    useLazyGetByWorkerIdQuery,
+    useLazyGetByObjectIdQuery,
+    useGetAllChartsQuery,
+} = statisticsApi;

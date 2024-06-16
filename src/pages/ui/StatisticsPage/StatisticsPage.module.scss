@@ -19,7 +19,10 @@
   }
   & .body {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.5fr 1fr ;
     grid-gap: 20px;
+    & > div {
+      height: 700px;
+    }
   }
 }

@@ -8,7 +8,7 @@ export const baseQuery = fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         // const accessToken = (getState() as RootState).auth.accessToken;
         const accessToken = localStorage.getItem('accessToken');
-        headers.set('Content-Type', 'application/json');
+        // headers.set('Content-Type', 'application/json');
         if (accessToken) {
             headers.set('Authorization', `Bearer ${accessToken}`);
         }

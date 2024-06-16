@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@shared/lib';
 
 export const useGetByWorkerIdStatistics = () => {
-    const [workerTrigger, { data }] = useLazyGetByWorkerIdQuery();
+    const [trigger, { data }] = useLazyGetByWorkerIdQuery();
     const dispatch = useAppDispatch();
-    const trigger = async (id: string) => {
-        await workerTrigger(id);
+    const workerTrigger = async (id: string) => {
+        await trigger(id);
     };
     useEffect(() => {
         if (data) {
             dispatch(setStatistics(data));
         }
     }, [data]);
-    return { trigger, data };
+    return { workerTrigger, data };
 };
